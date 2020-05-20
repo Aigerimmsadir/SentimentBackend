@@ -17,13 +17,17 @@ class CommentList(APIView):
             dsa = DiplomaSentimentAnalyzer()
             result_sent = []
             fs=FuzzySentiment()
+            print(serializer.data)
             for comment in serializer.data:
+
                 comment_info = dict(comment)
+                print(comment_info)
                 emoji_score = emoji_sentiment([comment_info['message']])
                 emoji_score = 50 if emoji_score is None else emoji_score[3]*100
                 text_score = dsa.get_sentiment_values(comment_info['message'])
                 final_sentiment = fs.get_sentiment(text_score['subjectivity'], text_score['polarity'], emoji_score)
                 comment_info['sentiment_res'] = final_sentiment
                 result_sent.append(comment_info)
+                print (comment_info)
             return Response(result_sent)
         return Response(serializer.errors)
