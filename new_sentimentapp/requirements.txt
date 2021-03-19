@@ -6,7 +6,7 @@ click==7.1.2
 Django==2.2.5
 django-cors-headers==3.1.1
 django-filter==2.2.0
-djangorestframework==3.10.2
+djangorestframework==3.11.2
 djangorestframework-simplejwt==4.3.0
 emoji==0.5.4
 future==0.18.2
